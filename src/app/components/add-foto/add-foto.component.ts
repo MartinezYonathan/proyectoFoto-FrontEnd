@@ -51,6 +51,7 @@ export class AddFotoComponent implements OnInit {
     );
     this.service.postFoto(this.foto)
       .subscribe(data => {
+        console.log(data.nombre);
         this.router.navigate(['list-foto']);
       });
   }
