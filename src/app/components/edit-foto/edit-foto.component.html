@@ -1,3 +1,25 @@
-<p>
-  edit-foto works!
-</p>
+<div class="col">
+    <h2 class="text-center">Editar Foto</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input formControlName="nombre" [(ngModel)]="form.nombre" placeholder="Nombre" name="nombre" class="form-control" id="nombre" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="descripcion">Descripcion:</label>
+        <input formControlName="descripcion" [(ngModel)]="form.descripcion" placeholder="descripcion" name="descripcion" class="form-control"
+          id="descripcion" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="foto">Agregar Foto:</label>
+        <input type="file" accept=".png, .jpg" (change)="onFileSelected($event)" formControlName="foto" placeholder="foto"
+          name="foto" class="form-control" id="foto" required>
+      </div>
+  
+      <button class="btn btn-success">Editar</button>
+      <button class="btn btn-primary" routerLink="list-foto">Regresar</button>
+    </form>
+  </div>

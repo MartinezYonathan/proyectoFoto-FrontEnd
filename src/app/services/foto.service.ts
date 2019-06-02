@@ -8,8 +8,9 @@ import { Foto } from '../model/foto';
   providedIn: 'root'
 })
 export class FotoService {
-  private baseUrl = 'http://localhost:9090/api/foto';
-  private baseUrlHeroku = 'https://api-foto-uacm.herokuapp.com/api/foto';
+  private baseUrl = 'http://localhost:8080';
+  private baseUrlHeroku = 'https://api-foto-uacm.herokuapp.com';
+  private Url = this.baseUrlHeroku +'/api/foto';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor( private http: HttpClient ) {
@@ -17,21 +18,21 @@ export class FotoService {
   }
 
   getFoto(): Observable<Foto[]> {
-    return this.http.get(this.baseUrlHeroku).pipe(
+    return this.http.get(this.Url).pipe(
       map(data => data as Foto[])
     );
   }
 
   postFoto(foto: Foto): Observable<Foto> {
-    return this.http.post<Foto>(this.baseUrlHeroku, foto, {headers: this.httpHeaders});
+    return this.http.post<Foto>(this.Url, foto, {headers: this.httpHeaders});
   }
 
   updateFoto(foto: Foto): Observable<Foto> {
-    return this.http.put<Foto>(this.baseUrlHeroku, foto, {headers: this.httpHeaders});
+    return this.http.put<Foto>(this.Url, foto, {headers: this.httpHeaders});
   }
 
   deleteFoto(id: number): Observable<Foto> {
-    return this.http.delete<Foto>(`${this.baseUrlHeroku}/${id}`, {headers: this.httpHeaders});
+    return this.http.delete<Foto>(`${this.Url}/${id}`, {headers: this.httpHeaders});
   }
 
 }
