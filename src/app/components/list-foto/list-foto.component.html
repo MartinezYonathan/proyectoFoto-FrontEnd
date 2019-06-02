@@ -1,0 +1,24 @@
+<div class="col">
+  <h2>Fotos</h2>
+  <button class="btn btn-primary" (click)="addFoto()">Agregar Foto</button>
+  <hr>
+  <div *ngFor="let foto of fotos">
+    <div class="card" style="width: 100%;">
+      <img src={{foto.foto}} style="
+      width: 50%; margin-left: auto;
+      margin-right: auto;
+      display: block;" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{foto.nombre}}</h5>
+        <p class="card-text">{{foto.descripcion}}</p>
+        <button class="btn btn-success" (click)="editFoto(foto)">
+          Editar
+        </button>
+        <button class="btn btn-danger" (click)="deleteFoto(foto)">
+          Borrar
+        </button>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
